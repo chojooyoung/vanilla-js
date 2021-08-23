@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>SPA history</title>
+    </head>
+    <body>
+        <nav>
+            <a class="link" href="/">Home</a>
+            <a class="link" href="/list">List</a>
+        </nav>
+        <div id="app"></div>
+        <script>
+            const onPushState=()=>{
+                const url =location.pathname
+                console.log(url)
+            if(url ==='/'){
+                document.querySelector('#app').innerHTML='<h1>Home</h1>'
+            }
+            else if(url ==='/list'){
+                document.querySelector('#app').innerHTML='<h1>List</h1>'
+            }
+        }
+            window.addEventListener('click',e=>{
+                if(e.target.className==='link'){
+                    e.preventDefault()
+                    history.pushState(null,null,e.target.href)
+                    onPushState(e.target.href.replace())
+                }
+            })
+            onPushState()
+        </script>
+    </body>
+</html>
