@@ -1,5 +1,11 @@
+import { checkText,checkKeyword } from "./validator.js"
 export default function TodoForm({$target,onSubmit}){
+
     const $form = document.createElement('form')
+
+    checkKeyword(new.target,TodoForm)    
+
+
 
     $target.appendChild($form)
     let isInit =false
@@ -15,7 +21,7 @@ export default function TodoForm({$target,onSubmit}){
             e.preventDefault()//태그의 기본동작을 끈다
             const $todo=$form.querySelector('input[name=todo]')
             const text=$todo.value
-            if(text.length>1){
+            if(checkText(text)!==true){
                 $todo.value=''
                 onSubmit(text);
             }
